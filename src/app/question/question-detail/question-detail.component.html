@@ -1,0 +1,43 @@
+<div class="row">
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{ question.title }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    {{ question.description }}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let options of question.options">
+        {{ options.title }} - {{ options.value }}
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div
+      class="btn-group"
+      appDropdown>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="onEditQuestion()">
+        Edit Question
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="onDeleteQuestion()">
+        Delete Question
+      </button>
+    </div>
+  </div>
+</div>

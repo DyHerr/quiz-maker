@@ -1,0 +1,81 @@
+<div class="row">
+    <div class="col-xs-12">
+      <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-xs-12">
+            <button
+              type="submit"
+              class="btn btn-success"
+              [disabled]="!questionForm.valid">Save</button>
+            <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input
+                type="text"
+                id="title"
+                formControlName="title"
+                class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea
+                type="text"
+                id="description"
+                class="form-control"
+                formControlName="description"
+                rows="6"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12" formArrayName="options">
+            <div
+              class="row"
+              *ngFor="let ingredientCtrl of questionControls; let i = index"
+              [formGroupName]="i"
+              style="margin-top: 10px;">
+              <div class="col-xs-8">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="title">
+              </div>
+              <div class="col-xs-2">
+                <select 
+                class="form-control" 
+                formControlName="value"
+                >
+                  <option value="true">True</option>
+                  <option value="false">False</option>
+                </select>
+              </div>
+              <div class="col-xs-2">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="onDeleteQuestion(i)">X</button>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-xs-12">
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  (click)="onAddQuestion()">Add Question</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
